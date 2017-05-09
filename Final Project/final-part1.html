@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- This is my final project of CSCI 2440 -->
+<!-- Spring 2017 -->
+<!-- Viet Ho -->
+<html>
+<head>
+<title>Final Project Part 01</title>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+    
+    h1 {        color: aqua; }
+    h2 {        color: lightcoral; }
+    h4 {        color: #00ff58;}
+    
+    body {      background-color: #d6fcfc; }
+    
+    #box1 {     height:				250px;
+				width:				250px;
+				background-color:	rosybrown;
+				margin:				10px;
+				border:				black 4px solid; }
+    
+    #box2 {     height:				100px;
+				width:				250px;
+				background-color:	royalblue;
+				margin:				10px;
+				border:				black 4px solid; }
+    #butt1 {    margin-left: 10px; }
+    #butt2 {    margin-left: 10px; }
+    
+    #butt3 {    margin-left: 10px; }
+    #butt4 {    margin-left: 10px; }
+    
+    #text1 {    margin-left: 20px; }
+    #butt5 {    margin-left: 80px; }
+    
+    
+    /*CSS for Effect 3*/
+    div#tagdiv { 
+                padding:10px 0; }
+    button#butt6 {
+                margin-left: 20px;}
+    div#text2 { padding:10px; 
+                margin-top:10px;}
+    div#text2 span { 
+                border:1px solid #f83636;
+                padding:3px; }
+
+</style>
+<!--Local Library-->
+
+<script type="text/javascript" src="Part01Files/st-lib/scriptaculous.js"></script>
+<script type="text/javascript" src="Part01Files/st-lib/prototype.js"></script>
+
+<!--Online Library-->
+<script src="https://ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+    
+    
+
+</head>
+<body>
+    
+<script>
+    
+    //Effect 02//////////
+    function folDemo()
+    {
+        new Effect.Fold("box1");
+        return false;
+    }
+    
+    function folReset()
+    {
+        $("box1").show();
+        return false;
+    }
+    
+    //Effect 02//////////
+    function palDemo()
+    {
+        new Effect.Parallel(
+        [
+            new Effect.Move("box2", {sync: true, x: 400, y: 0, mode: "relative"}),
+            new Effect.Opacity("box2", {sync: true, from: 1, to: 0})
+        ],  {
+                duration: 1.5,
+                delay: 0.5 
+            });
+        return false;
+    }
+    
+    function palReset()
+    {
+      new Effect.Parallel(
+        [
+            new Effect.Move("box2", {sync: true, x: -400, y: 0, mode: "relative"}),
+            new Effect.Opacity("box2", {sync: true, from: 0, to: 1})
+        ],  {
+                duration: 1.5,
+                delay: 0.5 
+            });
+        return false;
+    }
+    
+    
+    //Effect 03/////////
+    function showInput()
+    {
+        var message = document.getElementById("text1").value;
+        document.getElementById("display").innerHTML = message;
+    }
+    
+    function tagText()
+    {
+        new Effect.tagifyText("text2");
+        return false;
+    }
+</script>
+
+<h1>Final Project Part 01</h1>
+<hr>
+<h2>Scriptaculous</h2>
+ 
+<hr>
+<h3>Effect #1</h3>
+<h4>Fold</h4>
+
+<div id="box1">
+</div>
+
+<!--Buttons for Effect 1-->
+<input type="button" value="Demo!" id="butt1" onclick="folDemo()"/>
+<input type="button" value="Reset!" id="butt2" onclick="folReset()"/>
+
+    
+    
+<hr>
+<h3>Effect #2</h3>
+<h4>Parallel</h4>
+
+<div id="box2">    
+</div>
+
+<!--Buttons for Effect 2-->
+<input type="button" value="Demo!" id="butt3" onclick="palDemo()"/>
+<input type="button" value="Reset!" id="butt4" onclick="palReset()"/>
+
+    
+<hr>
+<h3>Effect #3</h3>    
+<h4>Tagify Texts</h4>
+
+<form>
+    <label><p>Enter some texts for the Demo!</p></label>
+    <input type="text" id="text1">    
+</form>
+<input type="button" value="Submit!" id="butt5" onlick="showInput()"/>
+<br/>
+<label>Your text: </label>
+<p><span id="display"></span></p>
+
+<div id="tagdiv">
+<p>Backup text!!</p>
+<div id="text2">Click the button to tagify this text!!!</div>
+<input type="button" value="Demo!" id="butt6" onclick="tagText()"/>
+</div>
+
+<h4></h4>
+</body>
+</html>
